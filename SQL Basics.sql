@@ -69,8 +69,14 @@
 	WHERE e.salary < (select  max(e2.salary)  from employees e2 where e2.department_id = e.department_id )
 	GROUP by e.department_id  ;
 	
-	
 
+	select d.department_name ,  max(e.salary) 
+	from employees e 
+	left join departments d on e.department_id = d.department_id
+	group by d.department_name 
+	HAVING d.department_name is NOT null
+	;
+	
 	
 	
 
